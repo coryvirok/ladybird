@@ -1,0 +1,11 @@
+<script src="./include.js"></script>
+<script>
+asyncTest(async done => {
+    const realm = new ShadowRealm()
+    const aSync = realm.evaluate(`async () => 1 + 1`)
+    aSync()
+    println('PASS')
+
+    await done()
+})
+</script>
