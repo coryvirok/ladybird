@@ -96,7 +96,7 @@ class TestHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
                 time.sleep(response_def["delay"])
 
             # Send the status code without any default headers
-            self.send_response_only(response_def.get("status_code", 200))
+            self.send_response_only(response_def.get("status", 200))
 
             # Set only the headers defined in the echo definition
             for header, value in response_def.get("headers", {}).items():
@@ -146,7 +146,7 @@ class TestHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
             <h2 class="text-2xl font-semibold mb-4 text-gray-700">Echo Definition Format:</h2>
             <pre class="bg-gray-100 p-4 rounded overflow-x-auto text-sm">
 {{
-    "status_code": int,
+    "status": int,
     "headers": {{
         "Header-Name": "Header-Value"
     }},
@@ -161,7 +161,7 @@ class TestHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
             <p class="mb-2 text-gray-600">Create a new echo response:</p>
             <pre class="bg-gray-100 p-4 rounded overflow-x-auto text-sm mb-4">
 curl -X POST http://localhost:{self.server.server_address[1]}/create -H "Content-Type: application/json" -d '{{
-    "status_code": 200,
+    "status": 200,
     "headers": {{
         "Content-Type": "application/json",
         "X-Custom-Header": "Custom Value"
@@ -187,7 +187,7 @@ async function createEchoResponse() {{
             'Content-Type': 'application/json',
         }},
         body: JSON.stringify({{
-            status_code: 200,
+            status: 200,
             headers: {{
                 'Content-Type': 'application/json',
                 'X-Custom-Header': 'Custom Value'
