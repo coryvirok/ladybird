@@ -276,7 +276,7 @@ def start_server_in_background(port, directory):
     time.sleep(0.05)
 
     # Verify that the server is up by sending a GET request to /ping
-    max_retries = 5
+    max_retries = 3
     for i in range(max_retries):
         try:
             conn = http.client.HTTPConnection("localhost", port, timeout=1)
@@ -290,7 +290,7 @@ def start_server_in_background(port, directory):
                 print(
                     f"Server not ready, retrying in 1 second... (Attempt {i+1}/{max_retries})"
                 )
-                time.sleep(3)
+                time.sleep(1)
             else:
                 print(f"Failed to start server after {max_retries} attempts")
                 return False
