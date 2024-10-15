@@ -27,6 +27,7 @@ output/
 .vim/
 .exrc
 .helix/
+.venv/
 
 # Gradle/AndroidStudio
 .gradle/
@@ -42,6 +43,10 @@ Tests/LibWeb/WPT/wpt
 Tests/LibWeb/WPT/metadata
 Tests/LibWeb/WPT/MANIFEST.json
 
+# HTTP Test server artifacts from ./Meta/http-test-server.py
+http-test-server.pid.txt
+http-test-server.log
+
 Meta/CMake/vcpkg/user-variables.cmake
 
 # Ensure that all files in /Base can be tracked, even if they match one of the above rules
@@ -49,4 +54,3 @@ Meta/CMake/vcpkg/user-variables.cmake
 
 # Keep last to ensure .DS_Store is never tracked, even if otherwise allowed by any exception above.
 .DS_Store
-.venv/
